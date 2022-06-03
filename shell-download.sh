@@ -38,6 +38,11 @@
 # SOFTWARE.
 #
 #------------------------------------------------------------------------------#
+# For all users
+binpath=/usr/local/bin # 
+# for users only
+# binpath="$HOME"/.local/bin
+
 # Check for wget or curl or fetch
 printf "Checking for HTTP client .."
 while true; do
@@ -107,7 +112,7 @@ if [ -f "$download_file" ]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
       full_path_download_file=$(realpath ./"$download_file")
       full_name_download_file=${download_file%.*}
-      sudo ln -s "$full_path_download_file" "$HOME"/.local/bin/"$full_name_download_file"
+      sudo ln -s "$full_path_download_file" "$binpath"/"$full_name_download_file"
       echo "Now you can run $full_name_download_file"
       exit 1
     fi
